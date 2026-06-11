@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- =========================================
+    AVOCADO INDONESIA COMPANY PROFILE WEBSITE
+    Single File HTML + CSS + JS
+    Easy to Edit
+  ========================================== -->
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Avocado Indonesia | Premium Avocado Exporter from East Java</title>
+  <meta
+    name="description"
+    content="Avocado Indonesia is a premium avocado farm, exporter, and supplier from East Java. GAP-certified Hass & Mentega avocados grown on volcanic soil and exported globally."
+  />
+  <meta
+    name="keywords"
+    content="avocado exporter indonesia, hass avocado indonesia, mentega avocado, avocado supplier, east java avocado, premium avocado export"
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+
+  <style>
+    /* =========================================
+       ROOT VARIABLES
+    ========================================== */
+    :root {
+      --green: #6B8E23;
+      --earth: #3C2F2F;
+      --white: #FFFFFF;
+      --gold: #C6A664;
+      --light: #F7F7F5;
+      --gray: #777777;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --radius: 18px;
+      --transition: 0.3s ease;
+      --container: 1200px;
+    }
+
+    /* =========================================
+       RESET
+    ========================================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--earth);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: var(--container);
+      margin: auto;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.4rem;
+      margin-bottom: 18px;
+      color: var(--earth);
+    }
+
+    .section-subtitle {
+      color: var(--gray);
+      max-width: 700px;
+      margin-bottom: 50px;
+    }
+
+    /* =========================================
+       BUTTONS
+    ========================================== */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #567419;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: var(--gold);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      opacity: 0.9;
+    }
+
+    /* =========================================
+       NAVBAR
+    ========================================== */
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--green);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* =========================================
+       HERO
+    ========================================== */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url('https://images.unsplash.com/photo-1603048719539-9ecb1b9f7d9d?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .hero h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 4rem;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      margin-bottom: 35px;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* =========================================
+       FEATURES
+    ========================================== */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 28px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .feature-card i {
+      font-size: 2.5rem;
+      color: var(--green);
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* =========================================
+       PRODUCT CAROUSEL
+    ========================================== */
+    .product-carousel {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-content {
+      padding: 24px;
+    }
+
+    .product-content h3 {
+      margin-bottom: 10px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      background: rgba(107,142,35,0.12);
+      color: var(--green);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-top: 12px;
+    }
+
+    /* =========================================
+       CERTIFICATIONS
+    ========================================== */
+    .certifications {
+      background: var(--light);
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 24px;
+    }
+
+    .cert-card {
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cert-card h3 {
+      color: var(--green);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* =========================================
+       CTA BANNER
+    ========================================== */
+    .cta-banner {
+      background:
+        linear-gradient(rgba(60,47,47,0.85), rgba(60,47,47,0.85)),
+        url('https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      border-radius: 24px;
+      padding: 70px 30px;
+    }
+
+    .cta-banner h2 {
+      font-size: 2.5rem;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 18px;
+    }
+
+    /* =========================================
+       ABOUT
+    ========================================== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-image-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 18px;
+    }
+
+    .about-image-grid img {
+      border-radius: var(--radius);
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .mission-box {
+      background: var(--light);
+      padding: 25px;
+      border-left: 5px solid var(--green);
+      border-radius: 12px;
+      margin: 22px 0;
+    }
+
+    /* =========================================
+       PRODUCT PAGE
+    ========================================== */
+    .filter-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      border: 1px solid #ddd;
+      background: white;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--green);
+      color: white;
+      border-color: var(--green);
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 24px;
+    }
+
+    .spec {
+      font-size: 0.95rem;
+      color: var(--gray);
+      margin: 12px 0 18px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 24px;
+      margin-top: 50px;
+    }
+
+    .service-card {
+      background: var(--light);
+      padding: 30px;
+      border-radius: var(--radius);
+    }
+
+    .service-card h3 {
+      margin-bottom: 12px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* =========================================
+       CONTACT
+    ========================================== */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 40px;
+    }
+
+    form {
+      background: white;
+      padding: 35px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .contact-info {
+      background: var(--light);
+      padding: 35px;
+      border-radius: var(--radius);
+    }
+
+    .contact-info h3 {
+      margin-bottom: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-item {
+      margin-bottom: 16px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 260px;
+      border: 0;
+      border-radius: 14px;
+      margin-top: 20px;
+    }
+
+    /* =========================================
+       FAQ
+    ========================================== */
+    .faq {
+      margin-top: 60px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 12px;
+      color: var(--gray);
+    }
+
+    /* =========================================
+       FOOTER
+    ========================================== */
+    footer {
+      background: var(--earth);
+      color: white;
+      padding: 70px 0 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h3 {
+      margin-bottom: 18px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-col a {
+      display: block;
+      margin-bottom: 10px;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .socials {
+      display: flex;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 20px;
+      text-align: center;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* =========================================
+       WHATSAPP FLOATING BUTTON
+    ========================================== */
+    .wa-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 60px;
+      height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      z-index: 999;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    /* =========================================
+       RESPONSIVE
+    ========================================== */
+    @media (max-width: 992px) {
+
+      .features-grid,
+      .product-carousel,
+      .product-grid,
+      .cert-grid,
+      .footer-grid,
+      .service-grid,
+      .contact-wrapper,
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+
+      .nav-links {
+        position: absolute;
+        top: 78px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 30px;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .features-grid,
+      .product-carousel,
+      .product-grid,
+      .cert-grid,
+      .footer-grid,
+      .service-grid,
+      .contact-wrapper,
+      .about-grid,
+      .about-image-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================================
+       HEADER
+  ========================================== -->
+  <header>
+    <div class="container navbar">
+      <div class="logo">Avocado Indonesia</div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn btn-primary">Request Quote</a>
+      </nav>
+
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================
+       HERO SECTION
+  ========================================== -->
+  <section class="hero" id="home">
+    <div class="container">
+      <div class="hero-content">
+
+        <p style="letter-spacing:2px; text-transform:uppercase; margin-bottom:12px;">
+          INDONESIAN PREMIUM AVOCADO EXPORTER
+        </p>
+
+        <h1>Indonesia's Finest Avocados, Cultivated for Global Markets</h1>
+
+        <p>
+          We produce premium avocados with rich nutrition, smooth texture, and carefully controlled post-harvest handling for Retail, Wholesale, and HoReCa Industries.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary">View Products</a>
+          <a href="#contact" class="btn btn-secondary">Request Quotation</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       FEATURES
+  ========================================== -->
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">Why Global Buyers Choose Us</h2>
+      <p class="section-subtitle">
+        Premium avocado farming backed by fertile volcanic soil,
+        modern cultivation, and export-grade processing standards.
+      </p>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <i class="fa-solid fa-mountain-sun"></i>
+          <h3>Volcanic Soil Rich Nutrients</h3>
+          <p>
+            Grown in East Java's fertile volcanic region for richer flavor,
+            creamier texture, and superior nutrition.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-calendar-days"></i>
+          <h3>365 Days Harvest Cycle</h3>
+          <p>
+            Stable year-round production capacity with carefully managed
+            harvest scheduling and quality consistency.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <i class="fa-solid fa-globe"></i>
+          <h3>Global Export Standard</h3>
+          <p>
+            GAP-certified, pesticide-free, and professionally sorted
+            for international retail and wholesale markets.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       FEATURED PRODUCTS
+  ========================================== -->
+  <section style="background: var(--light);">
+    <div class="container">
+
+      <h2 class="section-title">Featured Products</h2>
+      <p class="section-subtitle">
+        Fresh premium avocados tailored for supermarkets,
+        distributors, HoReCa, and food manufacturers.
+      </p>
+
+      <div class="product-carousel">
+
+        <div class="product-card">
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/john-vid-xPpq_ylNNMs-unsplash.jpg"
+            alt="Hass avocado export quality from Indonesia"
+          />
+
+          <div class="product-content">
+            <h3>Hass Avocado</h3>
+            <p>Premium export-grade avocados with rich buttery texture.</p>
+            <span class="badge">Export Quality</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/ChatGPT%20Image%2025%20Mei%202026,%2020.03.17.png"
+            alt="Pameling avocado from East Java plantation"
+          />
+
+          <div class="product-content">
+            <h3>Pameling Avocado</h3>
+            <p>Creamy local favorite with smooth texture and large size.</p>
+            <span class="badge">Premium Local Variety</span>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?q=80&w=1200&auto=format&fit=crop"
+            alt="Ready to eat avocado retail packaging"
+          />
+
+          <div class="product-content">
+            <h3>Ready-to-Eat Packs</h3>
+            <p>Retail-ready avocado packs ripened for supermarket shelves.</p>
+            <span class="badge">Retail Solution</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       CERTIFICATIONS
+  ========================================== -->
+  <section class="certifications">
+    <div class="container">
+
+      <h2 class="section-title">International Certifications</h2>
+
+      <div class="cert-grid">
+
+        <div class="cert-card">
+          <h3>GAP</h3>
+          <p>Good Agricultural Practices Certified</p>
+        </div>
+
+        <div class="cert-card">
+          <h3>Halal</h3>
+          <p>Halal Certified Processing</p>
+        </div>
+
+        <div class="cert-card">
+          <h3>HACCP</h3>
+          <p>Food Safety Management Standard</p>
+        </div>
+
+        <div class="cert-card">
+          <h3>Phytosanitary</h3>
+          <p>Export Compliance Documentation</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       CTA BANNER
+  ========================================== -->
+  <section>
+    <div class="container">
+      <div class="cta-banner">
+
+        <h2>Partner with Us</h2>
+
+        <p style="max-width:700px; margin:auto auto 28px;">
+          Looking for a reliable premium avocado supplier from Indonesia?
+          Our export team is ready to support your business growth.
+        </p>
+
+        <a href="#contact" class="btn btn-secondary">
+          Contact Sales Team
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================
+       ABOUT US
+  ========================================== -->
+  <section id="about">
+    <div class="container">
+
+      <h2 class="section-title">About Avocado Indonesia</h2>
+
+      <div class="about-grid">
+
+        <div>
+
+          <p>
+            Founded in 2025 in Sidoarjo, East Java,
+            Avocado Indonesia started with only 5 hectares
+            of avocado plantations and a simple vision:
+            bringing Indonesian premium avocados to the global market.
+          </p>
+
+          <div class="mission-box">
+            <strong>Mission:</strong>
+            Deliver the healthiest avocados while empowering
+            200+ local farmers through sustainable agriculture.
+          </div>
+
+          <div class="mission-box">
+            <strong>Vision:</strong>
+            To become Southeast Asia's most trusted premium
+            avocado supplier by 2030.
+          </div>
+
+          <p>
+            Today, we manage over 500+ hectares of fertile volcanic
+            farmland with modern post-harvest facilities, strict
+            quality control, and export-grade packaging systems.
+          </p>
+
+        </div>
+
+        <div class="about-image-grid">
+
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/IMG_7269.jpeg"
+            alt="Avocado plantation in East Java Indonesia"
+          />
+
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/25%20Mei%202026,%2020.17.35.png"
+            alt="Sorting facility for avocado export"
+          />
+
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/ChatGPT%20Image%2025%20Mei%202026,%2020.21.50.png"
+            alt="Team working in avocado farm"
+          />
+
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44pe8bcdg/IMG_7270.jpeg"
+            alt="Sustainable avocado farming"
+          />
+
+        </div>
+
+      </div>
+
+      <!-- Sustainability -->
+      <div style="margin-top:60px;">
+        <h3 style="font-family:'Poppins', sans-serif; margin-bottom:18px;">
+          Sustainability Commitment
+        </h3>
+
+        <p>
+          We implement zero-waste farming practices, drip irrigation systems,
+          and solar-powered warehouse operations to reduce environmental impact
+          while maintaining premium-quality produce.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       PRODUCTS
+  ========================================== -->
+  <section id="products" style="background: var(--light);">
+    <div class="container">
+
+      <h2 class="section-title">Our Products</h2>
+
+      <p class="section-subtitle">
+        Fresh, processed, and retail-ready avocado solutions
+        tailored to global market needs.
+      </p>
+
+      <!-- FILTER BUTTONS -->
+      <div class="filter-buttons">
+        <button class="filter-btn active">All</button>
+        <button class="filter-btn">Fresh</button>
+        <button class="filter-btn">Retail</button>
+        <button class="filter-btn">Frozen</button>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div class="product-grid">
+
+        <!-- Product 1 -->
+        <div class="product-card">
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/john-vid-G2dOfCLm4OA-unsplash.jpg"
+            alt="Hass avocado grade A export quality"
+          />
+
+          <div class="product-content">
+            <h3>Hass Avocado Grade A</h3>
+
+            <div class="spec">
+              Size 16-20 • Export Quality • 4kg Box
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+              Get Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card">
+          <img
+            src="https://uploads.onecompiler.io/44pec6z28/44qbakm5d/ChatGPT%20Image%2025%20Mei%202026,%2021.27.28.png"
+            alt="Pameling avocado premium creamy large size"
+          />
+
+          <div class="product-content">
+            <h3>Pameling Avocado Grade A</h3>
+
+            <div class="spec">
+              Creamy Texture • 300gr+ • 10kg Box
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+              Get Quote
+            </a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card">
+          <img
+            src="https://images.unsplash.com/photo-1519162808019-7de1683fa2ad?q=80&w=1200&auto=format&fit=crop"
+            alt="Ready to eat avocado retail tray"
+          />
+
+          <div class="product-content">
+            <h3>Ready-to-Eat Avocado Pack</h3>
+
+            <div class="spec">
+              Ripened • 2pcs Tray • Supermarket Ready
+            </div>
+
+            <a href="#contact" class="btn btn-primary">
+              Get Quote
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SERVICES -->
+      <div class="service-grid">
+
+        <div class="service-card">
+          <h3>Packaging Options</h3>
+          <p>
+            Flexible carton sizes, retail trays, vacuum packs,
+            and customized export packaging.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Private Label Service</h3>
+          <p>
+            Custom branding and supermarket-ready labeling
+            for distributors and retail chains.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <h3>Export Documents</h3>
+          <p>
+            Complete export documentation including
+            phytosanitary certificate and COO.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       CONTACT
+  ========================================== -->
+  <section id="contact">
+    <div class="container">
+
+      <h2 class="section-title">Contact Us</h2>
+
+      <div class="contact-wrapper">
+
+        <!-- FORM -->
+        <form>
+
+          <div class="form-group">
+            <input type="text" placeholder="Full Name" required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" placeholder="Company Name">
+          </div>
+
+          <div class="form-group">
+            <input type="email" placeholder="Email Address" required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" placeholder="Phone / WhatsApp">
+          </div>
+
+          <div class="form-group">
+            <input type="text" placeholder="Country">
+          </div>
+
+          <div class="form-group">
+            <select>
+              <option>Inquiry Type</option>
+              <option>Bulk Order</option>
+              <option>Distributor</option>
+              <option>HoReCa</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <textarea placeholder="Your Message"></textarea>
+          </div>
+
+          <button class="btn btn-primary" type="submit">
+            Send Inquiry
+          </button>
+
+        </form>
+
+        <!-- CONTACT INFO -->
+        <div class="contact-info">
+
+          <h3>Head Office</h3>
+
+          <div class="contact-item">
+            <strong>Address:</strong><br>
+            Jl. Raya Sidoarjo, East Java, Indonesia
+          </div>
+
+          <div class="contact-item">
+            <strong>Email:</strong><br>
+            info@avocado-indonesia.com
+          </div>
+
+          <div class="contact-item">
+            <strong>WhatsApp:</strong><br>
+            +62 853-8589-7124
+          </div>
+
+          <div class="contact-item">
+            <strong>Business Hours:</strong><br>
+            Mon - Sat | 8AM - 5PM GMT+7
+          </div>
+
+          <!-- Google Maps -->
+          <iframe
+            src="https://maps.google.com/maps?q=sidoarjo&t=&z=10&ie=UTF8&iwloc=&output=embed"
+            loading="lazy"
+            title="Avocado Indonesia Office Location">
+          </iframe>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="faq">
+
+        <h2 class="section-title">Frequently Asked Questions</h2>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What is your MOQ?</span>
+            <i class="fa-solid fa-plus"></i>
+          </div>
+          <div class="faq-answer">
+            MOQ depends on product type and destination country.
+            Please contact our sales team for detailed quotation.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What is the lead time?</span>
+            <i class="fa-solid fa-plus"></i>
+          </div>
+          <div class="faq-answer">
+            Average lead time is 7-14 working days depending
+            on volume and shipping schedule.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>What payment methods do you accept?</span>
+            <i class="fa-solid fa-plus"></i>
+          </div>
+          <div class="faq-answer">
+            We accept bank transfer, LC, and international payment methods.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>Which countries do you export to?</span>
+            <i class="fa-solid fa-plus"></i>
+          </div>
+          <div class="faq-answer">
+            We currently supply Singapore, Malaysia,
+            and selected Middle East markets.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <h3>Avocado Indonesia</h3>
+
+          <p>
+            Premium avocado farming, export, and supply solutions
+            from East Java's fertile volcanic soil.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+
+          <a href="#home">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#products">Products</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Certifications</h3>
+
+          <a href="#">GAP Certified</a>
+          <a href="#">Halal Certified</a>
+          <a href="#">HACCP</a>
+          <a href="#">Phytosanitary</a>
+        </div>
+
+        <div class="footer-col">
+          <h3>Follow Us</h3>
+
+          <div class="socials">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="copyright">
+        © 2025 Avocado Indonesia. All Rights Reserved.
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================
+       WHATSAPP FLOAT BUTTON
+  ========================================== -->
+  <a
+    href="https://wa.me/6285385897124"
+    class="wa-float"
+    target="_blank"
+    aria-label="Chat WhatsApp"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+  <script>
+
+    // =========================================
+    // MOBILE MENU
+    // =========================================
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // =========================================
+    // FAQ ACCORDION
+    // =========================================
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+      question.addEventListener('click', () => {
+
+        const answer = question.nextElementSibling;
+
+        if (answer.style.display === 'block') {
+          answer.style.display = 'none';
+        } else {
+          answer.style.display = 'block';
+        }
+
+      });
+    });
+
+  </script>
+
+</body>
+</html>
